@@ -873,12 +873,13 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
     footerWidgets.addAll(<Widget>[
       Container(width: 32.0),
       Text(
-        localizations.pageRowsInfoTitle(
-          _firstRowIndex + 1,
-          lastRow,
-          _rowCount,
-          _rowCountApproximate,
-        ),
+        "${_firstRowIndex + 1} - $lastRow",
+        // localizations.pageRowsInfoTitle(
+        //   _firstRowIndex + 1,
+        //   lastRow,
+        //   _rowCount,
+        //   _rowCountApproximate,
+        // ),
       ),
       Container(width: 32.0),
       if (widget.showFirstLastButtons)
