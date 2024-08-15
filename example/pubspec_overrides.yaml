@@ -1,0 +1,5 @@
+# melos_managed_dependency_overrides: data_table_2
+dependency_overrides:
+  data_table_2:
+    path: ..
+  intl: ^0.18.1

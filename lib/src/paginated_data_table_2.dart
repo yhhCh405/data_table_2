@@ -348,7 +348,7 @@ class PaginatedDataTable2 extends StatefulWidget {
   ///    match a component's state:
   ///    <https://material.io/design/interaction/states.html#anatomy>.
   /// {@endtemplate}
-  final WidgetStateProperty<Color?>? headingRowColor;
+  final MaterialStateProperty<Color?>? headingRowColor;
 
   /// If set this field will override the current BoxDecoration.
   /// It takes precedence over headerRowColor when both are provided.
