@@ -827,8 +827,9 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
 
     if (widget.onRowsPerPageChanged != null) {
       final List<Widget> availableRowsPerPage = widget.availableRowsPerPage
-          .where((int value) =>
-              value <= _rowCount || value == _effectiveRowsPerPage)
+          // .where((int value) =>
+          //     value <= _rowCount || value == _effectiveRowsPerPage
+          //     )
           .map<DropdownMenuItem<int>>((int value) {
         return DropdownMenuItem<int>(
           value: value,
@@ -840,24 +841,27 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
           Container(width: 14.0),
           // to match trailing padding in case we overflow and end up scrolling
           Text(localizations.rowsPerPageTitle),
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-                minWidth: 64.0), // 40.0 for the text, 24.0 for the icon
-            child: Align(
-              alignment: AlignmentDirectional.centerEnd,
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<int>(
-                  items: availableRowsPerPage.cast<DropdownMenuItem<int>>(),
-                  value: _effectiveRowsPerPage,
-                  onChanged: (r) {
-                    _setRowsPerPage(r);
-                  },
-                  style: footerTextStyle,
-                  iconSize: 24.0,
-                ),
-              ),
+          const SizedBox(width: 5),
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black12),
+                borderRadius: BorderRadius.circular(3)),
+            child: DropdownButton<int>(
+              isDense: true,
+              underline: const SizedBox(),
+              padding: const EdgeInsets.only(left: 5),
+              borderRadius: BorderRadius.circular(3),
+              // style: const TextStyle(fontSize: 14),
+              items: availableRowsPerPage.cast<DropdownMenuItem<int>>(),
+              value: _effectiveRowsPerPage,
+              onChanged: (r) {
+                _setRowsPerPage(r);
+              },
+              style: footerTextStyle,
+              iconSize: 24.0,
             ),
           ),
+          const Spacer(),
         ]);
       }
     }
@@ -918,14 +922,16 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
         data: const IconThemeData(opacity: 0.54),
         child: SizedBox(
           height: 56.0,
-          child: SingleChildScrollView(
-            dragStartBehavior: widget.dragStartBehavior,
-            scrollDirection: Axis.horizontal,
-            reverse: true,
-            child: Row(
-              children: footerWidgets,
-            ),
+          child:
+              //  SingleChildScrollView(
+              //   dragStartBehavior: widget.dragStartBehavior,
+              //   scrollDirection: Axis.horizontal,
+              //   reverse: true,
+              //   child:
+              Row(
+            children: footerWidgets,
           ),
+          // ),
         ),
       ),
     );
